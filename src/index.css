@@ -4,6 +4,7 @@
 
 @import url(./components/Header/Header.css);
 @import url(./components/Main/Main.css);
+@import url(./components/Directions/Directions.css);
 
 @import url(./components/Locations/NewYork/NewYork.css);
 @import url(./components/Locations/Tennessee/Tennessee.css);

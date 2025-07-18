@@ -1,0 +1,57 @@
+@keyframes pulseText {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 5;
+
+  background-color: transparent;
+}
+
+.header__img {
+  width: 40px;
+  height: 40px;
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.header__text-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.header__text {
+  background-color: black;
+  border-radius: 40%;
+  opacity: 0.8;
+  color: black;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+  font-weight: 500px;
+  text-shadow: 2px 2px 0 white;
+  cursor: pointer;
+}
+
+.header__text:hover {
+  animation: pulseText 1s ease-in-out infinite;
+}

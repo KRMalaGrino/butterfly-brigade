@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
 }
 
 .main__wrapper {
@@ -14,16 +13,18 @@
   font-size: 70px;
   font-weight: 700;
   letter-spacing: 40px;
+  text-align: center;
   color: white;
   box-shadow: 4px 3px 30px rgb(188, 188, 188);
   border-radius: 10px;
 }
 
 .main__map {
+  position: relative;
   max-width: 1150px;
   width: 100%;
   height: 700px;
-  box-shadow: 2px 2px 10px rgb(188, 188, 188);
+  box-shadow: 2px 2px 10px #96caff;
 }
 
 .main__ny-logo {
@@ -33,10 +34,19 @@
   box-shadow: 2px 2px 10px;
 
   position: absolute;
-  top: 363px;
-  right: 175px;
+  top: 383px;
+  right: 395px;
 
   cursor: cell;
+  transition: width 0.2s linear, height 0.2s linear, top 0.2s linear,
+    right 0.2s linear;
+}
+
+.main__ny-logo:hover {
+  width: 50px;
+  height: 50px;
+  top: 378px;
+  right: 390px;
 }
 
 .main__tn-logo {
@@ -46,10 +56,19 @@
   box-shadow: 2px 2px 10px;
 
   position: absolute;
-  top: 507px;
-  right: 365px;
+  top: 532px;
+  right: 585px;
 
   cursor: cell;
+  transition: width 0.2s linear, height 0.2s linear, top 0.2s linear,
+    right 0.2s linear;
+}
+
+.main__tn-logo:hover {
+  width: 50px;
+  height: 50px;
+  top: 527px;
+  right: 580px;
 }
 
 .main__ga-logo {
@@ -59,10 +78,19 @@
   box-shadow: 2px 2px 10px;
 
   position: absolute;
-  top: 563px;
-  right: 360px;
+  top: 588px;
+  right: 570px;
 
   cursor: cell;
+  transition: width 0.2s linear, height 0.2s linear, top 0.2s linear,
+    right 0.2s linear;
+}
+
+.main__ga-logo:hover {
+  width: 50px;
+  height: 50px;
+  top: 583px;
+  right: 565px;
 }
 
 .main__ar-logo {
@@ -72,10 +100,19 @@
   box-shadow: 2px 2px 10px;
 
   position: absolute;
-  top: 19.5%;
-  left: 30.2%;
+  top: 602px;
+  left: 500px;
 
   cursor: cell;
+  transition: width 0.2s linear, height 0.2s linear, top 0.2s linear,
+    left 0.2s linear;
+}
+
+.main__ar-logo:hover {
+  width: 50px;
+  height: 50px;
+  top: 596px;
+  left: 494px;
 }
 
 .main__or-logo {
@@ -85,8 +122,18 @@
   box-shadow: 2px 2px 10px;
 
   position: absolute;
-  top: 33.5%;
-  left: 17.2%;
+  top: 290px;
+  left: 281px;
 
   cursor: cell;
+
+  transition: width 0.2s linear, height 0.2s linear, top 0.2s linear,
+    left 0.2s linear;
+}
+
+.main__or-logo:hover {
+  width: 50px;
+  height: 50px;
+  top: 285px;
+  left: 276px;
 }

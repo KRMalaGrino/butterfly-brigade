@@ -16,8 +16,8 @@ function Map() {
         <form className="map__searchBar-form">
           <label className="map__searchBar-label">
             <input className="map__searchBar-input" />
-            <button className="map__searchBar-btn">Go</button>
           </label>
+          <button className="map__searchBar-btn">Go</button>
         </form>
       </div>
       <Link to="/new-york">

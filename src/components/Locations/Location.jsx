@@ -1,15 +1,5 @@
 import { Link } from "react-router-dom";
 
-// import or1 from "../../../images/oregon/cliffs-and-rocky-shoreline-oregon.jpg";
-// import or2 from "../../../images/oregon/coast-rocks.jpg";
-// import or3 from "../../../images/oregon/mthood.png";
-// import or5 from "../../../images/oregon/multnomahfalls.webp";
-// import or6 from "../../../images/oregon/joseph-dawn-lights.jpg";
-// import or7 from "../../../images/oregon/joseph_or_main_st.jpg";
-// import or8 from "../../../images/oregon/wallowa-lake.jpg";
-// import or9 from "../../../images/oregon/watterfall-on-beach.webp";
-// import or10 from "../../../images/oregon/Secret-Beach-overlook.jpg";
-
 import backBtn from "../../images/back-btn-2.png";
 
 function Location() {

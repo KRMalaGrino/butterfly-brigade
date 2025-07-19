@@ -17,8 +17,8 @@ function Map() {
   };
 
   // Filter search results based on whats typed
-  const filterPlaces = places.filter((places) =>
-    places.name.toLowerCase().includes(typedInfo.toLowerCase())
+  const filterPlaces = places.filter((place) =>
+    place.name.toLowerCase().trim().includes(typedInfo.toLowerCase().trim())
   );
   // Render filtered places
   const renderFilteredPlaces = () => {

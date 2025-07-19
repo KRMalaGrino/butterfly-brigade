@@ -1,14 +1,11 @@
-import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Oregon from "./Locations/Oregon/Oregon";
 
 function App() {
   return (
     <div className="app">
-      <Header />
       <Routes>
         <Route path="/" element={<Main />} />
         {/* <Route path="/new-york" element={<NewYork />} />

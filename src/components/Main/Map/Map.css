@@ -47,6 +47,12 @@
   height: 50px;
   width: 500px;
   border-radius: 50px;
+  color: gray;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 3px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
 }
 
 .map__searchBar-btn {
@@ -81,7 +87,7 @@
   right: 390px;
 }
 
-.map__tn-logo {
+.map__orlando-logo {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -96,14 +102,14 @@
     right 0.2s linear;
 }
 
-.map__tn-logo:hover {
+.map__orlando-logo:hover {
   width: 50px;
   height: 50px;
   top: 527px;
   right: 580px;
 }
 
-.map__ga-logo {
+.map__st-logo {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -118,14 +124,14 @@
     right 0.2s linear;
 }
 
-.map__ga-logo:hover {
+.map__st-logo:hover {
   width: 50px;
   height: 50px;
   top: 583px;
   right: 565px;
 }
 
-.map__ar-logo {
+.map__mt-logo {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -140,14 +146,14 @@
     left 0.2s linear;
 }
 
-.map__ar-logo:hover {
+.map__mt-logo:hover {
   width: 50px;
   height: 50px;
   top: 596px;
   left: 494px;
 }
 
-.map__or-logo {
+.map__sanfran-logo {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -163,7 +169,7 @@
     left 0.2s linear;
 }
 
-.map__or-logo:hover {
+.map__sanfran-logo:hover {
   width: 50px;
   height: 50px;
   top: 285px;

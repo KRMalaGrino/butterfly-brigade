@@ -21,7 +21,7 @@ function Directions() {
         <div className="directions__line-3"></div>
       </div>
       <div className="directions__wrapper-2">
-        <p className="directions__title">Tenessee</p>
+        <p className="directions__title">Orlando</p>
         <Link to="/tenessee">
           <img className="directions__img" src={orlando} alt="tennessee" />
         </Link>
@@ -32,7 +32,7 @@ function Directions() {
         <div className="directions__line-1"></div>
       </div>
       <div className="directions__wrapper-1">
-        <p className="directions__title">Georgia</p>
+        <p className="directions__title">St Louis</p>
         <Link to="/georgia">
           <img className="directions__img" src={stlouis} alt="georgia" />
         </Link>
@@ -43,7 +43,7 @@ function Directions() {
         <div className="directions__line-3"></div>
       </div>
       <div className="directions__wrapper-2">
-        <p className="directions__title">Arizona</p>
+        <p className="directions__title">Mt. Rushmore</p>
         <Link to="/arizona">
           <img className="directions__img" src={mtrush} alt="arizona" />
         </Link>
@@ -54,7 +54,7 @@ function Directions() {
         <div className="directions__line-1"></div>
       </div>
       <div className="directions__wrapper-1">
-        <p className="directions__title">Oregon</p>
+        <p className="directions__title">San Fransisco</p>
         <Link to="/oregon">
           <img className="directions__img" src={sanfran} alt="oregon" />
         </Link>

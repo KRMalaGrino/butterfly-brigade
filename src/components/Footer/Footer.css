@@ -1,2 +1,46 @@
 .footer {
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 30px;
+  width: 1550px;
+}
+
+.footer__text {
+  color: rgb(199, 199, 199);
+  margin: 0;
+  letter-spacing: 3px;
+  font-size: 20px;
+}
+
+.footer__team-linked-ins {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 60px;
+}
+
+.footer__icon-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.footer__icon-text {
+  color: rgb(199, 199, 199);
+  margin: 0;
+  text-align: center;
+  letter-spacing: 3px;
+  margin: 0 0 10px;
+}
+
+.footer__icon {
+  margin: 0;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-color: gray;
+
+  cursor: pointer;
 }

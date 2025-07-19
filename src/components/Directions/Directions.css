@@ -31,7 +31,43 @@
   width: 600px;
   height: 400px;
   box-shadow: 2px 2px 10px rgb(255, 214, 103);
+
+  transition: width 0.5s linear, height 0.5s linear;
+
+  cursor: crosshair;
 }
 
-.directions__line {
+.directions__img:hover {
+  width: 640px;
+  height: 440px;
+}
+
+.directions__lines {
+}
+
+.directions__line-1 {
+  background-color: rgb(5, 20, 39);
+  width: 20px;
+  height: 150px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgb(171, 230, 255);
+  margin: 40px 0 0 1085px;
+}
+
+.directions__line-2 {
+  background-color: rgb(5, 20, 39);
+  width: 400px;
+  height: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgb(171, 230, 255);
+  margin: 40px 0 0 625px;
+}
+
+.directions__line-3 {
+  background-color: rgb(5, 20, 39);
+  width: 20px;
+  height: 150px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgb(171, 230, 255);
+  margin: 40px 0 0 540px;
 }

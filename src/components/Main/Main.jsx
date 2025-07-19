@@ -6,6 +6,7 @@ import ar from "../../images/arizona-logo.png";
 import or from "../../images/oregon-logo.png";
 
 import Directions from "../Directions/Directions";
+import Footer from "../Footer/Footer";
 
 function Main({
   handleNewYorkClick,
@@ -51,6 +52,7 @@ function Main({
         onClick={handleOregonClick}
       />
       <Directions />
+      <Footer />
     </div>
   );
 }

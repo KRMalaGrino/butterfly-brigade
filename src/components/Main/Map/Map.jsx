@@ -13,6 +13,12 @@ function Map() {
       <div className="map__wrapper">
         <h1 className="map__title">East to West</h1>
         <img className="map__map" src={mapDark} alt="map" />
+        <form className="map__searchBar-form">
+          <label className="map__searchBar-label">
+            <input className="map__searchBar-input" />
+            <button className="map__searchBar-btn">Go</button>
+          </label>
+        </form>
       </div>
       <Link to="/new-york">
         <img className="map__ny-logo" src={ny} alt="ny" />

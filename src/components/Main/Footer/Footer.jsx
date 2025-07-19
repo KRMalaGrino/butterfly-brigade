@@ -2,7 +2,7 @@
 // import liam from "";
 // import sabrina from "";
 // import brandon from "";
-import ryan from "../../images/teammates/Ryan.jpg";
+import ryan from "../../../images/teammates/Ryan.jpg";
 
 function Footer() {
   return (

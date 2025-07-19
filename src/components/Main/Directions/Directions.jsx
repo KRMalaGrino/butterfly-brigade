@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-import ny from "../../images/new-york-logo.png";
-import tn from "../../images/tennessee-logo.png";
-import ga from "../../images/georgia-logo.png";
-import ar from "../../images/arizona-logo.png";
-import or from "../../images/oregon-logo.png";
+import ny from "../../../images/new-york-logo.png";
+import tn from "../../../images/tennessee-logo.png";
+import ga from "../../../images/georgia-logo.png";
+import ar from "../../../images/arizona-logo.png";
+import or from "../../../images/oregon-logo.png";
 
 function Directions() {
   return (

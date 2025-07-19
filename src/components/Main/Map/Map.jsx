@@ -1,40 +1,58 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import mapDark from "../../../images/map-dark.png";
-import ny from "../../../images/new-york-logo.png";
-import tn from "../../../images/tennessee-logo.png";
-import ga from "../../../images/georgia-logo.png";
-import ar from "../../../images/arizona-logo.png";
-import or from "../../../images/oregon-logo.png";
+
+import { places } from "../../../utils/constants";
 
 function Map() {
+  const [typedInfo, settypedInfo] = useState("");
+
+  // Submit & change handlers for searchBar
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+  const handleChange = (e) => {
+    settypedInfo(e.target.value);
+  };
+
+  // Filter search results based on whats typed
+  const filterPlaces = places.filter((places) =>
+    places.name.toLowerCase().includes(typedInfo.toLowerCase())
+  );
+  // Render filtered places
+  const renderFilteredPlaces = () => {
+    return filterPlaces.map((place) => (
+      <Link key={place.name} to={place.route}>
+        <img className={place.className} src={place.image} alt={place.name} />
+      </Link>
+    ));
+  };
+
   return (
     <div className="map">
       <div className="map__wrapper">
         <h1 className="map__title">East to West</h1>
         <img className="map__map" src={mapDark} alt="map" />
-        <form className="map__searchBar-form">
-          <label className="map__searchBar-label">
-            <input className="map__searchBar-input" />
+        <form
+          className="map__searchBar-form"
+          id="map-searchBar"
+          onSubmit={handleSubmit}
+        >
+          <label className="map__searchBar-label" htmlFor="search-map">
+            <input
+              className="map__searchBar-input"
+              type="search"
+              id="map-searchBar"
+              name="search"
+              placeholder="Where would you like to go ?"
+              onChange={handleChange}
+            />
           </label>
           <button className="map__searchBar-btn">Go</button>
         </form>
       </div>
-      <Link to="/new-york">
-        <img className="map__ny-logo" src={ny} alt="ny" />
-      </Link>
-      <Link to="/tenessee">
-        <img className="map__tn-logo" src={tn} alt="tn" />
-      </Link>
-      <Link to="/georgia">
-        <img className="map__ga-logo" src={ga} alt="ga" />
-      </Link>
-      <Link to="/arizona">
-        <img className="map__ar-logo" src={ar} alt="ar" />
-      </Link>
-      <Link to="/oregon">
-        <img className="map__or-logo" src={or} alt="or" />
-      </Link>
+      {renderFilteredPlaces()}
     </div>
   );
 }

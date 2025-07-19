@@ -30,10 +30,11 @@
 
 .map__searchBar-form {
   position: absolute;
-  top: 450px;
+  top: 370px;
   opacity: 0.3;
 
   transition: opacity 0.5s linear;
+  z-index: 100;
 }
 
 .map__searchBar-form:hover {
@@ -47,6 +48,12 @@
   height: 50px;
   width: 500px;
   border-radius: 50px;
+  color: gray;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 3px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
 }
 
 .map__searchBar-btn {
@@ -81,91 +88,90 @@
   right: 390px;
 }
 
-.map__tn-logo {
+.map__orlando-logo {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   box-shadow: 2px 2px 10px;
 
   position: absolute;
-  top: 532px;
-  right: 585px;
+  top: 722px;
+  right: 533px;
 
   cursor: cell;
   transition: width 0.2s linear, height 0.2s linear, top 0.2s linear,
     right 0.2s linear;
 }
 
-.map__tn-logo:hover {
+.map__orlando-logo:hover {
   width: 50px;
   height: 50px;
-  top: 527px;
-  right: 580px;
+  top: 717px;
+  right: 528px;
 }
 
-.map__ga-logo {
+.map__st-logo {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   box-shadow: 2px 2px 10px;
 
   position: absolute;
-  top: 588px;
-  right: 570px;
+  top: 465px;
+  right: 700px;
 
   cursor: cell;
   transition: width 0.2s linear, height 0.2s linear, top 0.2s linear,
     right 0.2s linear;
 }
 
-.map__ga-logo:hover {
+.map__st-logo:hover {
   width: 50px;
   height: 50px;
-  top: 583px;
-  right: 565px;
+  top: 460px;
+  right: 695px;
 }
 
-.map__ar-logo {
+.map__mt-logo {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   box-shadow: 2px 2px 10px;
 
   position: absolute;
-  top: 602px;
-  left: 500px;
+  top: 310px;
+  left: 675px;
 
   cursor: cell;
   transition: width 0.2s linear, height 0.2s linear, top 0.2s linear,
     left 0.2s linear;
 }
 
-.map__ar-logo:hover {
+.map__mt-logo:hover {
   width: 50px;
   height: 50px;
-  top: 596px;
-  left: 494px;
+  top: 305px;
+  left: 670px;
 }
 
-.map__or-logo {
+.map__sanfran-logo {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   box-shadow: 2px 2px 10px;
 
   position: absolute;
-  top: 290px;
-  left: 281px;
-
+  top: 475px;
+  left: 300px;
   cursor: cell;
 
   transition: width 0.2s linear, height 0.2s linear, top 0.2s linear,
     left 0.2s linear;
 }
 
-.map__or-logo:hover {
+.map__sanfran-logo:hover {
   width: 50px;
   height: 50px;
-  top: 285px;
-  left: 276px;
+  top: 470px;
+  left: 296px;
 }

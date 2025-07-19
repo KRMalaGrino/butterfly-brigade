@@ -13,26 +13,58 @@ function Footer() {
       <div className="footer__team-linked-ins">
         <div className="footer__wrapper">
           <p className="footer__icon-text">Victor</p>
-          <a href="" target="_blank" rel="noopener noreferrer">
-            <img className="footer__icon" src="" alt="Victor" />
+          <a
+            href=""
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              className="footer__icon"
+              src="Victor icon"
+              alt="Victor"
+            />
           </a>
         </div>
         <div className="footer__wrapper">
           <p className="footer__icon-text">Liam</p>
-          <a href="" target="_blank" rel="noopener noreferrer">
-            <img className="footer__icon" src="" alt="Liam" />
+          <a
+            href=""
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              className="footer__icon"
+              src="liam icon"
+              alt="Liam"
+            />
           </a>
         </div>
         <div className="footer__wrapper">
           <p className="footer__icon-text">Sabrina</p>
-          <a href="" target="_blank" rel="noopener noreferrer">
-            <img className="footer__icon" src="" alt="Sabrina" />
+          <a
+            href=""
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              className="footer__icon"
+              src="savrina icon"
+              alt="Sabrina"
+            />
           </a>
         </div>
         <div className="footer__wrapper">
           <p className="footer__icon-text">Brandon</p>
-          <a href="" target="_blank" rel="noopener noreferrer">
-            <img className="footer__icon" src="" alt="Brandon" />
+          <a
+            href=""
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              className="footer__icon"
+              src="brandon icon"
+              alt="Brandon"
+            />
           </a>
         </div>
         <div className="footer__wrapper">
@@ -42,7 +74,11 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img className="footer__icon" src={ryan} alt="Ryan" />
+            <img
+              className="footer__icon"
+              src={ryan}
+              alt="Ryan"
+            />
           </a>
         </div>
       </div>

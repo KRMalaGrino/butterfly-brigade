@@ -1,7 +1,6 @@
-// import victor from "";
-// import liam from "";
-// import sabrina from "";
-// import brandon from "";
+import victor from "../../../images/teammates/vic.jpeg";
+import liam from "../../../images/teammates/liam.jpeg";
+import sabrina from "../../../images/teammates/sabrina.jpeg";
 import ryan from "../../../images/teammates/Ryan.jpg";
 
 function Footer() {
@@ -14,57 +13,31 @@ function Footer() {
         <div className="footer__wrapper">
           <p className="footer__icon-text">Victor</p>
           <a
-            href=""
+            href="https://www.linkedin.com/in/victor-forman-9687b1a9/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              className="footer__icon"
-              src="Victor icon"
-              alt="Victor"
-            />
-          </a>
-        </div>
-        <div className="footer__wrapper">
-          <p className="footer__icon-text">Liam</p>
-          <a
-            href=""
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              className="footer__icon"
-              src="liam icon"
-              alt="Liam"
-            />
+            <img className="footer__icon" src={victor} alt="Victor" />
           </a>
         </div>
         <div className="footer__wrapper">
           <p className="footer__icon-text">Sabrina</p>
           <a
-            href=""
+            href="https://www.linkedin.com/in/sabrina-mcfield/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              className="footer__icon"
-              src="savrina icon"
-              alt="Sabrina"
-            />
+            <img className="footer__icon" src={sabrina} alt="Sabrina" />
           </a>
         </div>
         <div className="footer__wrapper">
-          <p className="footer__icon-text">Brandon</p>
+          <p className="footer__icon-text">Liam</p>
           <a
-            href=""
+            href="https://www.linkedin.com/in/liam-d-48935a34a/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              className="footer__icon"
-              src="brandon icon"
-              alt="Brandon"
-            />
+            <img className="footer__icon" src={liam} alt="Liam" />
           </a>
         </div>
         <div className="footer__wrapper">
@@ -74,11 +47,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              className="footer__icon"
-              src={ryan}
-              alt="Ryan"
-            />
+            <img className="footer__icon" src={ryan} alt="Ryan" />
           </a>
         </div>
       </div>

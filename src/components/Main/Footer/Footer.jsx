@@ -14,13 +14,13 @@ function Footer() {
         <div className="footer__wrapper">
           <p className="footer__icon-text">Victor</p>
           <a
-            href=""
+            href="https://www.linkedin.com/in/victor-forman-9687b1a9"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
               className="footer__icon"
-              src="Victor icon"
+              src="https://media.licdn.com/dms/image/v2/D4D03AQFz2ml5q23H1A/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1723445985603?e=1755734400&v=beta&t=7R7bO9Iloj7cTjtxJkJR8caGvK3hWThF46FViOnE2BY"
               alt="Victor"
             />
           </a>

@@ -25,21 +25,38 @@
   box-shadow: 2px 2px 10px #96caff;
 }
 
-.map__icon {
-  position: relative;
+.map__pin-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 10px;
+
+  position: absolute;
+  cursor: cell;
+
+  transition: width 0.2s linear, height 0.2s linear, top 0.2s linear,
+    right 0.2s linear;
+}
+
+.map__pin-icon:hover {
+  width: 50px;
+  height: 50px;
 }
 
 .map__searchBar-form {
   position: absolute;
-  top: 370px;
-  opacity: 0.3;
+  top: 430px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.6;
+  margin: 0 auto;
 
   transition: opacity 0.5s linear;
   z-index: 100;
 }
 
 .map__searchBar-form:hover {
-  opacity: 0.8;
+  opacity: 0.95;
 }
 
 .map__searchBar-input {
@@ -49,19 +66,9 @@
   color: gray;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 3px;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
   text-align: center;
-}
-
-.map__searchBar-btn {
-  margin: 0 0 0 8px;
-  border: none;
-  background-color: rgb(219, 219, 219);
-  border-radius: 200px;
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
 }
 
 .map__ny-logo {
@@ -172,4 +179,32 @@
   height: 50px;
   top: 470px;
   left: 296px;
+}
+
+@media screen and (max-width: 914px) {
+  .map__title {
+    font-size: 60px;
+  }
+}
+
+@media screen and (max-width: 855px) {
+  .map__searchBar-form {
+    top: 480px;
+  }
+
+  .map__searchBar-input {
+    height: 50px;
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 496px) {
+  .map__searchBar-form {
+    top: 550px;
+  }
+
+  .map__searchBar-input {
+    height: 50px;
+    width: 270px;
+  }
 }

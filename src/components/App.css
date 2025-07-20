@@ -4,5 +4,5 @@
   flex-direction: column;
   min-height: 100vh;
   flex-grow: 1;
-  background-color: #202020;
+  background-color: rgb(20, 20, 20);
 }

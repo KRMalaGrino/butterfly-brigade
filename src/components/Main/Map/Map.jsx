@@ -23,8 +23,15 @@ function Map() {
   // Render filtered places
   const renderFilteredPlaces = () => {
     return filterPlaces.map((place) => (
-      <Link key={place.name} to={place.route}>
-        <img className={place.className} src={place.image} alt={place.name} />
+      <Link
+        key={place.name}
+        to={place.route}
+      >
+        <img
+          className={place.className}
+          src={place.image}
+          alt={place.name}
+        />
       </Link>
     ));
   };
@@ -33,13 +40,20 @@ function Map() {
     <div className="map">
       <div className="map__wrapper">
         <h1 className="map__title">East to West</h1>
-        <img className="map__map" src={mapDark} alt="map" />
+        <img
+          className="map__map"
+          src={mapDark}
+          alt="map"
+        />
         <form
           className="map__searchBar-form"
           id="map-searchBar"
           onSubmit={handleSubmit}
         >
-          <label className="map__searchBar-label" htmlFor="search-map">
+          <label
+            className="map__searchBar-label"
+            htmlFor="search-map"
+          >
             <input
               className="map__searchBar-input"
               type="search"

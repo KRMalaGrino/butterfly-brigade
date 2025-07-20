@@ -186,3 +186,9 @@
   top: 470px;
   left: 296px;
 }
+
+@media screen and (max-width: 914px) {
+  .map__title {
+    font-size: 60px;
+  }
+}

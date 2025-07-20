@@ -1,7 +1,6 @@
-// import victor from "";
-// import liam from "";
-// import sabrina from "";
-// import brandon from "";
+import victor from "../../../images/teammates/vic.jpeg";
+import liam from "../../../images/teammates/liam.jpeg";
+import sabrina from "../../../images/teammates/sabrina.jpeg";
 import ryan from "../../../images/teammates/Ryan.jpg";
 
 function Footer() {
@@ -13,26 +12,32 @@ function Footer() {
       <div className="footer__team-linked-ins">
         <div className="footer__wrapper">
           <p className="footer__icon-text">Victor</p>
-          <a href="" target="_blank" rel="noopener noreferrer">
-            <img className="footer__icon" src="" alt="Victor" />
-          </a>
-        </div>
-        <div className="footer__wrapper">
-          <p className="footer__icon-text">Liam</p>
-          <a href="" target="_blank" rel="noopener noreferrer">
-            <img className="footer__icon" src="" alt="Liam" />
+          <a
+            href="https://www.linkedin.com/in/victor-forman-9687b1a9/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img className="footer__icon" src={victor} alt="Victor" />
           </a>
         </div>
         <div className="footer__wrapper">
           <p className="footer__icon-text">Sabrina</p>
-          <a href="" target="_blank" rel="noopener noreferrer">
-            <img className="footer__icon" src="" alt="Sabrina" />
+          <a
+            href="https://www.linkedin.com/in/sabrina-mcfield/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img className="footer__icon" src={sabrina} alt="Sabrina" />
           </a>
         </div>
         <div className="footer__wrapper">
-          <p className="footer__icon-text">Brandon</p>
-          <a href="" target="_blank" rel="noopener noreferrer">
-            <img className="footer__icon" src="" alt="Brandon" />
+          <p className="footer__icon-text">Liam</p>
+          <a
+            href="https://www.linkedin.com/in/liam-d-48935a34a/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img className="footer__icon" src={liam} alt="Liam" />
           </a>
         </div>
         <div className="footer__wrapper">

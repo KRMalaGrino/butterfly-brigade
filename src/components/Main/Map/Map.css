@@ -72,7 +72,7 @@
   color: gray;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 3px;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
   text-align: center;
 }
@@ -190,5 +190,27 @@
 @media screen and (max-width: 914px) {
   .map__title {
     font-size: 60px;
+  }
+}
+
+@media screen and (max-width: 855px) {
+  .map__searchBar-form {
+    top: 480px;
+  }
+
+  .map__searchBar-input {
+    height: 50px;
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 496px) {
+  .map__searchBar-form {
+    top: 550px;
+  }
+
+  .map__searchBar-input {
+    height: 50px;
+    width: 270px;
   }
 }

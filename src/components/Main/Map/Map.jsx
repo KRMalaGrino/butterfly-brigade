@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import mapDark from "../../../images/map-dark.png";
 
-import { places } from "../../../utils/constants";
+// import { places } from "../../../utils/constants";
 
 function Map() {
   const [typedInfo, settypedInfo] = useState("");
@@ -17,17 +17,17 @@ function Map() {
   };
 
   // Filter search results based on whats typed
-  const filterPlaces = places.filter((place) =>
-    place.name.toLowerCase().trim().includes(typedInfo.toLowerCase().trim())
-  );
+  // const filterPlaces = places.filter((place) =>
+  //   place.name.toLowerCase().trim().includes(typedInfo.toLowerCase().trim())
+  // );
   // Render filtered places
-  const renderFilteredPlaces = () => {
-    return filterPlaces.map((place) => (
-      <Link key={place.name} to={place.route}>
-        <img className={place.className} src={place.image} alt={place.name} />
-      </Link>
-    ));
-  };
+  // const renderFilteredPlaces = () => {
+  //   return filterPlaces.map((place) => (
+  //     <Link key={place.name} to={place.route}>
+  //       <img className={place.className} src={place.image} alt={place.name} />
+  //     </Link>
+  //   ));
+  // };
 
   return (
     <div className="map">

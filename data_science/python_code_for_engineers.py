@@ -1,4 +1,26 @@
-#  distance, compute_total_distance, and geocode_address is the foundational logic required to run the best_route_map function
+# Import the libraries used to run the code
+from fastapi import FastAPI
+from pydantic import BaseModel
+from typing import Optional, List
+import pandas as pd
+import itertools
+import math
+from geopy.geocoders import Nominatim
+
+app = FastAPI()
+
+# Link to read the landmarks csv file that is located in Sabrina's branch
+url = 'https://raw.githubusercontent.com/KRMalaGrino/butterfly-brigade/refs/heads/sabrina/data_science/landmarks.csv'
+landmarks = pd.read_csv(url)
+
+#  The functions distance, compute_total_distance, and geocode_address is the foundational logic required to run the final best_route_map function
+
+# Request model for route optimization
+class RouteRequest(BaseModel):
+    address: str
+    landmark_type: Optional[str] = None
+    min_popularity: Optional[float] = None
+    max_visit_time: Optional[float] = None
 
 #Takes two coordinates and finds the distance between them on Earth (kilometers)
 def distance(lat1, lon1, lat2, lon2):
@@ -35,94 +57,66 @@ def geocode_address(address):
     else:
         raise ValueError(f"Address not found: {address}")
 
+# Filtering by preferences allows the user to pass any combination of filters — if they skip one, it simply won’t be applied.
+def filter_landmarks(df, landmark_type=None, min_popularity=None, max_visit_time=None):
+
+    filtered_df = landmarks.copy()
+    
+    if landmark_type:
+        filtered_df = filtered_df[filtered_df['type'].str.lower() == landmark_type.lower()]
+    
+    if min_popularity is not None:
+        filtered_df = filtered_df[filtered_df['popularity'] >= min_popularity]
+    
+    if max_visit_time is not None:
+        filtered_df = filtered_df[filtered_df['visit time (hrs)'] <= max_visit_time]
+    
+    return filtered_df.reset_index(drop=True)
 
 # This is the final function that requires an address as input and returns the best route with total distance, a list of the order of the landmarks based on the best route, and a visualization of the best route that includes a pop-up when hovering over each landmark. The pop-up includes the landmark name, type, visit time, popularity score, and the distance to the next destination.
 
-def best_route_map(address, df):
-    # Step 1 — Geocode address
-    lat, lon = geocode_address(address)
-    
+@app.post("/best_route/")
+def get_best_route(request: RouteRequest):
+    try:
+        lat, lon = geocode_address(request.address)
+    except ValueError as e:
+        return {"error": str(e)}
+
+    filtered_landmarks = filter_landmarks(landmarks, request.landmark_type, request.min_popularity, request.max_visit_time)
+    if filtered_landmarks.empty:
+        return {"error": "No landmarks matched the filter criteria."}
+
     best_dist = float('inf')
     best_route_df = None
-    
-    cols = df.columns
+
+    cols = filtered_landmarks.columns
     home_data = [['home', 'home', 'home', lat, lon, 'home', 0, 0, 0, 0, 0, 0, 0, 0]]
-    home = pd.DataFrame(data=home_data, columns=cols)
+    home = pd.DataFrame(home_data, columns=cols)
     home2 = home.copy()
-    
-    # Step 2 — Brute-force all permutations
-    permutations = list(itertools.permutations(df.index))
-    for perm in permutations:
-        route = df.loc[list(perm)].reset_index(drop=True)
+
+    for perm in itertools.permutations(filtered_landmarks.index):
+        route = filtered_landmarks.loc[list(perm)].reset_index(drop=True)
         complete_route = pd.concat([home, route, home2], ignore_index=True)
         dist = compute_total_distance(complete_route)
         if dist < best_dist:
             best_dist = dist
             best_route_df = complete_route
 
-    # Step 3 — Create hover text with next leg distance
-    hover_texts = []
-    for i in range(len(best_route_df)):
-        row = best_route_df.loc[i]
-        if i < len(best_route_df) - 1:
-            loc1 = (row['latitude'], row['longitude'])
-            loc2 = (best_route_df.loc[i + 1, 'latitude'], best_route_df.loc[i + 1, 'longitude'])
-            next_leg_distance = haversine(loc1, loc2)
-            next_leg_info = f"Next Leg Distance: {next_leg_distance:.2f} km"
-        else:
-            next_leg_info = "End of Route"
-        
-        hover_texts.append(
-            f"<b>{row['landmark']}</b><br>"
-            f"Type: {row['type']}<br>"
-            f"Visit Time: {row['visit_time_(hrs)']} hrs<br>"
-            f"Popularity Score: {row['popularity']}<br>"
-            f"{next_leg_info}"
-        )
-
-    # Step 4 — Plotting with Plotly
-    fig = go.Figure()
-
-    # Add lines between landmarks with distance info
-    for i in range(len(best_route_df) - 1):
-        loc1 = (best_route_df.loc[i, 'latitude'], best_route_df.loc[i, 'longitude'])
-        loc2 = (best_route_df.loc[i + 1, 'latitude'], best_route_df.loc[i + 1, 'longitude'])
-        fig.add_trace(go.Scattermap(
-            mode="lines",
-            lon=[loc1[1], loc2[1]],
-            lat=[loc1[0], loc2[0]],
-            line={'width': 2, 'color': 'green'},
-            text=[f"{best_route_df.loc[i, 'landmark']} → {best_route_df.loc[i + 1, 'landmark']}<br>Distance: {haversine(loc1, loc2):.2f} km"],
-            hoverinfo='text',
-            showlegend=False
-        ))
-
-       # Add markers with hover text
-    fig.add_trace(go.Scattermap(
-        mode="markers",  # Only markers, no always-visible text
-        lon=best_route_df['longitude'],
-        lat=best_route_df['latitude'],
-        text=hover_texts,
-        marker={'size': 10, 'color': 'green'},
-        hoverinfo='text',
-        name='Optimized Route'
-    ))
-    
-    fig.update_layout(
-        mapbox_style="open-street-map",
-        mapbox_zoom=4,
-        mapbox_center={"lat": best_route_df['latitude'].mean(), "lon": best_route_df['longitude'].mean()},
-        title=f"Optimized Route — Total Distance: {best_dist:.2f} km",
-        height=600
-    )
-
-    fig.show()
-
-    # Step 5 — Return route summary
     location_order = best_route_df['landmark'].tolist()
-    return f"Total Distance: {best_dist:.2f} km, Best Route: {location_order}"
+    return {
+        "total_distance_km": round(best_dist, 2),
+        "best_route_order": location_order
+    }
 
-# Geocoder works best with street address, city and state at a minimum for input
-address = '1417 Columbus Drive St. Louis Mo'
+# Example request body in json
+{
+  "address": "1417 Columbus Drive St. Louis Mo",
+  "landmark_type": "architectural",
+  "min_popularity": 50,
+  "max_visit_time": 5
+}
 
-result = best_route_map(address, df)
+#Run the API with:
+uvicorn python_code_for_engineers:app
+
+

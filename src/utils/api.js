@@ -6,22 +6,12 @@ function getPlaces() {
   }).then(handleResponse);
 }
 
-function getRoute(from, to) {
-  return fetch(`${baseUrl}/route?from=${from}&to=${to}`, {
+function submitData(data) {
+  return fetch(`${baseUrl}/submit`, {
+    method: "POST",
     headers: baseHeader,
+    body: JSON.stringify(data),
   }).then(handleResponse);
 }
 
-function getPlaceById(id) {
-  return fetch(`${baseUrl}/places/${id}`, {
-    headers: baseHeader,
-  }).then(handleResponse);
-}
-
-function getStartingPoint() {
-  return fetch(`${baseUrl}/place/`, {
-    headers: baseHeader,
-  }).then(handleResponse);
-}
-
-export { getPlaces, getRoute, getPlaceById, getStartingPoint };
+export { getPlaces, submitData };

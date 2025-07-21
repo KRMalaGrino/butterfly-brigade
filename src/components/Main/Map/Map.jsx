@@ -1,33 +1,39 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 import mapDark from "../../../images/map-dark.png";
 import startPoint from "../../../images/start-point.jpg";
 
-import { places } from "../../../utils/constants";
+import { cities } from "../../../utils/constants";
 
-function Map() {
+function Map({ places, route, onSearch }) {
   const [typedInfo, settypedInfo] = useState("");
   const [pinPosition, setPinPosition] = useState(null);
 
   // Submit & change handlers for searchBar
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (typedInfo.trim()) {
+      onSearch(typedInfo.trim());
+    }
   };
   const handleChange = (e) => {
     settypedInfo(e.target.value);
   };
 
   // Filter search results based on whats typed
-  const filterPlaces = places.filter((place) =>
+  const filterCities = cities.filter((place) =>
     place.name.toLowerCase().trim().includes(typedInfo.toLowerCase().trim())
   );
-  // Render filtered places
-  const renderFilteredPlaces = () => {
-    return filterPlaces.map((place) => (
-      <Link key={place.name} to={place.route}>
-        <img className={place.className} src={place.image} alt={place.name} />
-      </Link>
+  // Render filtered cities
+  const renderFilteredCities = () => {
+    return filterCities.map((place) => (
+      <img
+        key={`${place.name}-${place.id || place.lat}-${place.lon}`}
+        className={place.className}
+        src={place.image}
+        alt={place.name}
+        onClick={() => onSearch(place.name)}
+      />
     ));
   };
 
@@ -49,6 +55,7 @@ function Map() {
           alt="map"
           onClick={handleStartPointClick}
         />
+        {route?.points && <RouteLines points={route.points} />}
         {pinPosition && (
           <img
             className="map__pin-icon"
@@ -78,7 +85,7 @@ function Map() {
           </label>
         </form>
       </div>
-      {renderFilteredPlaces()}
+      {renderFilteredCities()}
     </div>
   );
 }

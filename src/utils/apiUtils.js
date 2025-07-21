@@ -1,6 +1,7 @@
 // const APIkey = "";
 
-const baseUrl = process.env.NODE_ENV === "http://localhost:3001";
+const baseUrl = process.env.NODE_ENV === "http://localhost:8000";
+// "http://127.0.0.1:8000"
 
 const baseHeader = { "Content-Type": "application/json" };
 

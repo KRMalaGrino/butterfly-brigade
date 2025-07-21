@@ -4,7 +4,7 @@ import stlouis from "../images/st-louis/st-louis-logo.jpeg";
 import mtrush from "../images/mt-rush/mt-rush-logo.jpg";
 import sanfran from "../images/san-fran/san-fran-logo.avif";
 
-const places = [
+const cities = [
   {
     // city: "",
     // state: "",
@@ -17,7 +17,6 @@ const places = [
     // popularity: "",
     // visitors: "",
     name: "New York",
-    route: "/new-york",
     image: newyork,
     className: "map__ny-logo",
   },
@@ -33,7 +32,6 @@ const places = [
     // popularity: "",
     // visitors: "",
     name: "Orlando",
-    route: "/orlando",
     image: orlando,
     className: "map__orlando-logo",
   },
@@ -49,7 +47,6 @@ const places = [
     // popularity: "",
     // visitors: "",
     name: "St. Louis",
-    route: "/st-louis",
     image: stlouis,
     className: "map__st-logo",
   },
@@ -65,7 +62,6 @@ const places = [
     // popularity: "",
     // visitors: "",
     name: "Mt. Rushmore",
-    route: "/mt-rushmore",
     image: mtrush,
     className: "map__mt-logo",
   },
@@ -81,10 +77,9 @@ const places = [
     // popularity: "",
     // visitors: "",
     name: "San Fransisco",
-    route: "/san-fransisco",
     image: sanfran,
     className: "map__sanfran-logo",
   },
 ];
 
-export { places };
+export { cities };

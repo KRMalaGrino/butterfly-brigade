@@ -17,6 +17,7 @@ function Map() {
   }, [typedInfo]);
 
   return (
+    // Map imputs
     <div className="map">
       <h1 className="map__title">East to West</h1>
       <div className="map__userInput">
@@ -43,7 +44,7 @@ function Map() {
       <MapContainer
         center={[39.5, -98.35]}
         zoom={4}
-        style={{ height: "500px", width: "100%" }}
+        style={{ height: "500px", width: "100%" }} // leaflet css div's don't work with markers
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 

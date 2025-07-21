@@ -1,0 +1,6 @@
+city,state,landmark,latitude,longitude,type,visit time (hrs),popularity
+keystone,south dakota,mount rushmore,43.8791,-103.4591,historical architectural,2,47
+new york,new york,statue of liberty,40.6892,-74.0445,historical architectural,4,50
+st. louis,missouri,gateway arch,38.6247,-90.1848,architectural,2,44
+san francisco,california,golden gate bridge,37.8199,-122.4783,architectural,2,59
+orlando,florida,disney world,28.3852,-81.5639,amusement park,8,98

@@ -14,7 +14,7 @@ url = 'https://raw.githubusercontent.com/KRMalaGrino/butterfly-brigade/refs/head
 landmarks = pd.read_csv(url)
 
 
-# Filtering by preferences
+# Filtering by preferences allows the user to pass any combination of filters — if they skip one, it simply won’t be applied.
 def filter_landmarks(df, landmark_type=None, min_popularity=None, max_visit_time=None):
     """
     Filters the landmarks DataFrame based on any combination of:

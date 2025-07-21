@@ -1,4 +1,4 @@
-# Sightseeing Route Optimization: Landmark-Based Roadtrip Planner  
+# Roadtrip Route Optimizer: Data-Driven Landmark Exploration  
 
 ## Project Overview  
 This project focuses on building a data-driven roadtrip planner that generates optimized travel routes through popular landmarks and natural attractions. Using real-world data—such as visitor reviews, photo counts, and annual visitor statistics—the system ranks each landmark with a calculated popularity score and suggests the optimal time travelers might spend at each location.  

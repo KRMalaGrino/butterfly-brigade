@@ -25,8 +25,15 @@ function Map() {
   // Render filtered places
   const renderFilteredPlaces = () => {
     return filterPlaces.map((place) => (
-      <Link key={place.name} to={place.route}>
-        <img className={place.className} src={place.image} alt={place.name} />
+      <Link
+        key={place.name}
+        to={place.route}
+      >
+        <img
+          className={place.className}
+          src={place.image}
+          alt={place.name}
+        />
       </Link>
     ));
   };
@@ -47,6 +54,7 @@ function Map() {
           className="map__map"
           src={mapDark}
           alt="map"
+        />
           onClick={handleStartPointClick}
         />
         {pinPosition && (
@@ -66,7 +74,10 @@ function Map() {
           id="map-searchBar"
           onSubmit={handleSubmit}
         >
-          <label className="map__searchBar-label" htmlFor="search-map">
+          <label
+            className="map__searchBar-label"
+            htmlFor="search-map"
+          >
             <input
               className="map__searchBar-input"
               type="search"

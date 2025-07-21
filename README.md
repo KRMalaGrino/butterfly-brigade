@@ -3,7 +3,8 @@ a roadtrip route through the most picturesque and popular landmarks and natural 
 
 ## Tech Used ##
  - React 
-
+ - Html / Css
+ - Python
 
 -----------------------------------------------------
 ### delete me befor the end ### 

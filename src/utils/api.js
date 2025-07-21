@@ -18,4 +18,10 @@ function getPlaceById(id) {
   }).then(handleResponse);
 }
 
-export { getPlaces, getRoute, getPlaceById };
+function getStartingPoint() {
+  return fetch(`${baseUrl}/place/`, {
+    headers: baseHeader,
+  }).then(handleResponse);
+}
+
+export { getPlaces, getRoute, getPlaceById, getStartingPoint };

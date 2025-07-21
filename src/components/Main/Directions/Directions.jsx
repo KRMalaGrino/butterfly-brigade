@@ -29,7 +29,6 @@ function Directions() {
       </div>
       {/* second stop */}
       <div className="directions__wrapper-2">
-        <p className="directions__title">Orlando</p>
         <Link to="/tenessee">
           <img
             className="directions__img"
@@ -37,6 +36,7 @@ function Directions() {
             alt="tennessee"
           />
         </Link>
+        <p className="directions__title">Orlando</p>
       </div>
       <div className="directions__lines">
         <div className="directions__line-3"></div>
@@ -65,7 +65,6 @@ function Directions() {
       </div>
       {/* fourth stop */}
       <div className="directions__wrapper-2">
-        <p className="directions__title">Mt. Rushmore</p>
         <Link to="/arizona">
           <img
             className="directions__img"
@@ -73,6 +72,7 @@ function Directions() {
             alt="arizona"
           />
         </Link>
+        <p className="directions__title">Mt. Rushmore</p>
       </div>
       <div className="directions__lines">
         <div className="directions__line-3"></div>

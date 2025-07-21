@@ -2,11 +2,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import mapDark from "../../../images/map-dark.png";
+import startPoint from "../../../images/start-point.jpg";
 
 import { places } from "../../../utils/constants";
 
 function Map() {
   const [typedInfo, settypedInfo] = useState("");
+  const [pinPosition, setPinPosition] = useState(null);
 
   // Submit & change handlers for searchBar
   const handleSubmit = (e) => {
@@ -36,6 +38,14 @@ function Map() {
     ));
   };
 
+  // Handle clicking on the map
+  const handleStartPointClick = (e) => {
+    const map = e.target.getBoundingClientRect();
+    const x = e.clientX - map.left; // x relative to image
+    const y = e.clientY - map.top; // y relative to image
+    setPinPosition({ x, y });
+  };
+
   return (
     <div className="map">
       <div className="map__wrapper">
@@ -45,6 +55,20 @@ function Map() {
           src={mapDark}
           alt="map"
         />
+          onClick={handleStartPointClick}
+        />
+        {pinPosition && (
+          <img
+            className="map__pin-icon"
+            src={startPoint}
+            alt="start-point"
+            style={{
+              top: `${pinPosition.y}px`,
+              left: `${pinPosition.x}px`,
+              transform: "translate(140px, 200px)",
+            }}
+          />
+        )}
         <form
           className="map__searchBar-form"
           id="map-searchBar"
@@ -65,6 +89,7 @@ function Map() {
           </label>
         </form>
       </div>
+      {renderFilteredPlaces()}
     </div>
   );
 }

@@ -11,7 +11,7 @@ import { places } from "../../../utils/constants";
 function Map() {
   const [typedInfo, setTypedInfo] = useState("");
   const [filteredPlaces, setFilteredPlaces] = useState(places);
-
+  
   // filter whenever typedInfo changes
   useEffect(() => {
     setFilteredPlaces(
@@ -32,6 +32,7 @@ function Map() {
   return (
     // Map imputs
     <div className="map">
+
       <h1 className="map__title">SunChaser</h1>
       <div className="map__userInput">
         <div className="map__searchBar">

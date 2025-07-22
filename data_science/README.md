@@ -60,12 +60,12 @@ The time required for route optimization was measured using Python’s `time` mo
 │   └── popular_route.png
 │   └── top5landmarks.png
 │   └── visit_popular.png  
-├── Landmark_Dataset_with_Visit_Time_and_Popularity_Factors.csv
+├── Landmark_Dataset_with_Visit_Time_and_Popularity_Factors.csv  # Original dataset
 ├── README.md 
-├── landmarks.csv
-├── python_code_for_engineers.py
-├── roadtrip_project.ipynb   
-├── sightseeing_project.ipynb  
+├── landmarks.csv  # Filtered dataset
+├── python_code_for_engineers.py # Code for software engineers to deploy
+├── roadtrip_project.ipynb   # First draft notebook
+├── sightseeing_project.ipynb  # Final notebook
 ```
 
 ## Technologies Used  

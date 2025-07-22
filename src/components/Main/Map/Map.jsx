@@ -1,95 +1,85 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-
-import mapDark from "../../../images/map-dark.png";
-import startPoint from "../../../images/start-point.jpg";
-
+import { useState, useEffect } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 import { places } from "../../../utils/constants";
+// import newyork from "../images/new-york/new-york-logo.png";
+// import orlando from "../images/orlando/orlando-logo.jpg";
+// import stlouis from "../images/st-louis/st-louis-logo.jpeg";
+// import mtrush from "../images/mt-rush/mt-rush-logo.jpg";
+// import sanfran from "../images/san-fran/san-fran-logo.avif";
 
 function Map() {
-  const [typedInfo, settypedInfo] = useState("");
-  const [pinPosition, setPinPosition] = useState(null);
+  const [typedInfo, setTypedInfo] = useState("");
+  const [filteredPlaces, setFilteredPlaces] = useState(places);
+  
+  // filter whenever typedInfo changes
+  useEffect(() => {
+    setFilteredPlaces(
+      places.filter((place) =>
+        place.name.toLowerCase().includes(typedInfo.toLowerCase().trim())
+      )
+    );
+  }, [typedInfo]);
 
-  // Submit & change handlers for searchBar
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-  const handleChange = (e) => {
-    settypedInfo(e.target.value);
-  };
-
-  // Filter search results based on whats typed
-  const filterPlaces = places.filter((place) =>
-    place.name.toLowerCase().trim().includes(typedInfo.toLowerCase().trim())
-  );
-  // Render filtered places
-  const renderFilteredPlaces = () => {
-    return filterPlaces.map((place) => (
-      <Link
-        key={place.name}
-        to={place.route}
-      >
-        <img
-          className={place.className}
-          src={place.image}
-          alt={place.name}
-        />
-      </Link>
-    ));
-  };
-
-  // Handle clicking on the map
-  const handleStartPointClick = (e) => {
-    const map = e.target.getBoundingClientRect();
-    const x = e.clientX - map.left; // x relative to image
-    const y = e.clientY - map.top; // y relative to image
-    setPinPosition({ x, y });
-  };
+  // // Create the icon object
+  // const customIcon = L.icon({
+  //   iconUrl: place.image,
+  //   iconSize: [40, 40], // adjust size as needed
+  //   iconAnchor: [20, 40], // anchor (bottom-center of icon)
+  //   popupAnchor: [0, -40], // popup appears above marker
+  // });
 
   return (
+    // Map imputs
     <div className="map">
-      <div className="map__wrapper">
-        <h1 className="map__title">East to West</h1>
-        <img
-          className="map__map"
-          src={mapDark}
-          alt="map"
-        />
-          onClick={handleStartPointClick}
-        />
-        {pinPosition && (
-          <img
-            className="map__pin-icon"
-            src={startPoint}
-            alt="start-point"
-            style={{
-              top: `${pinPosition.y}px`,
-              left: `${pinPosition.x}px`,
-              transform: "translate(140px, 200px)",
-            }}
+
+      <h1 className="map__title">SunChaser</h1>
+      <div className="map__userInput">
+        <div className="map__searchBar">
+          <input
+            type="search"
+            placeholder="Where are you? !NOT IMPLEMENTED!"
+            value={typedInfo}
+            onChange={(e) => setTypedInfo(e.target.value)}
+            className="map__searchBar-input"
           />
-        )}
-        <form
-          className="map__searchBar-form"
-          id="map-searchBar"
-          onSubmit={handleSubmit}
-        >
-          <label
-            className="map__searchBar-label"
-            htmlFor="search-map"
-          >
-            <input
-              className="map__searchBar-input"
-              type="search"
-              id="map-searchBar"
-              name="search"
-              placeholder="Where would you like to go ?"
-              onChange={handleChange}
-            />
-          </label>
-        </form>
+        </div>
+        <div className="map__searchBar">
+          <input
+            type="search"
+            placeholder="Where would you like to go?"
+            value={typedInfo}
+            onChange={(e) => setTypedInfo(e.target.value)}
+            className="map__searchBar-input"
+          />
+        </div>
       </div>
-      {renderFilteredPlaces()}
+
+      <MapContainer
+        center={[39.5, -98.35]}
+        zoom={4}
+        // placeholder={"interactive map"} Placeholder doesn't work
+        style={{ height: "500px", width: "100%" }} // leaflet css div's don't work with markers
+      >
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+
+        {filteredPlaces.map((place) => (
+          <Marker
+            key={place.landmark}
+            position={[Number(place.latitude), Number(place.longitude)]}
+            alt={`${place.landmark} image`}
+            // iconUrl={customIcon}
+          >
+            <Popup>
+              <strong>{place.landmark}</strong>
+              <br />
+              {place.city}, {place.state}
+              <br />⭐ {place.averageUserRating} – Visit ~{place.visitTimeHrs}
+               hr
+            </Popup>
+          </Marker>
+        ))}
+      </MapContainer>
     </div>
   );
 }

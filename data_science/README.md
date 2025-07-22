@@ -1,4 +1,4 @@
-# Roadtrip Route Optimizer: Data-Driven Landmark Exploration  
+# Sunchaser: Roadtrip Route Optimizer
 
 ## Project Overview  
 This project focuses on building a data-driven roadtrip planner that generates optimized travel routes through popular landmarks and natural attractions. Using real-world data—such as visitor reviews, photo counts, and annual visitor statistics—the system ranks each landmark with a calculated popularity score and suggests the optimal time travelers might spend at each location.  
@@ -53,18 +53,19 @@ The time required for route optimization was measured using Python’s `time` mo
 ## Repository Structure  
 ```
 ├─ data_science
-├── .ipynb_checkpoints
+├─ .ipynb_checkpoints
+├── datasets
+├── Landmark_Dataset_with_Visit_Time_and_Popularity_Factors.csv  # Original dataset
+│   └── landmarks.csv  # Filtered dataset
 ├── images/  
 │   ├── baseline_route.png  
 │   └── optimized_route.png
 │   └── popular_route.png
 │   └── top5landmarks.png
 │   └── visit_popular.png  
-├── Landmark_Dataset_with_Visit_Time_and_Popularity_Factors.csv  # Original dataset
 ├── README.md 
-├── landmarks.csv  # Filtered dataset
 ├── python_code_for_engineers.py # Code for software engineers to deploy
-├── roadtrip_project.ipynb   # First draft notebook
+
 ├── sightseeing_project.ipynb  # Final notebook
 ```
 

@@ -8,7 +8,7 @@ function Main({ places, route, singlePlace }) {
   console.log(singlePlace);
   return (
     <div className="main">
-      <Map />
+      <Map places={places} route={route} />
       <Directions />
       <Footer />
     </div>

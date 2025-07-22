@@ -2,16 +2,70 @@ import { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { places } from "../../../utils/constants";
-// import newyork from "../images/new-york/new-york-logo.png";
-// import orlando from "../images/orlando/orlando-logo.jpg";
-// import stlouis from "../images/st-louis/st-louis-logo.jpeg";
-// import mtrush from "../images/mt-rush/mt-rush-logo.jpg";
-// import sanfran from "../images/san-fran/san-fran-logo.avif";
+import L from "leaflet";
 
 function Map() {
   const [typedInfo, setTypedInfo] = useState("");
+  const [originInput, setOriginInput] = useState("");
+  const [originCoords, setOriginCoords] = useState(null);
+  const [destinationInput, setDestinationInput] = useState("");
+  const [destinationCoords, setDestinationCoords] = useState(null);
   const [filteredPlaces, setFilteredPlaces] = useState(places);
-  
+
+  const startIcon = new L.Icon({
+    iconUrl: "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32],
+  });
+
+  const endIcon = new L.Icon({
+    iconUrl: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32],
+  });
+
+  function handleOriginSearch() {
+    if (!originInput.trim()) return;
+
+    const query = encodeURIComponent(originInput.trim());
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.length > 0) {
+          const { lat, lon } = data[0];
+          setOriginCoords([parseFloat(lat), parseFloat(lon)]);
+        } else {
+          alert("Location not found.");
+        }
+      })
+      .catch((err) => {
+        console.error("Geocoding error:", err);
+        alert("Failed to geocode address.");
+      });
+  }
+
+  function handleDestinationSearch() {
+    if (!destinationInput.trim()) return;
+
+    const query = encodeURIComponent(destinationInput.trim());
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.length > 0) {
+          const { lat, lon } = data[0];
+          setDestinationCoords([parseFloat(lat), parseFloat(lon)]);
+        } else {
+          alert("Destination not found.");
+        }
+      })
+      .catch((err) => {
+        console.error("Geocoding error:", err);
+        alert("Failed to geocode address.");
+      });
+  }
+
   // filter whenever typedInfo changes
   useEffect(() => {
     setFilteredPlaces(
@@ -32,26 +86,37 @@ function Map() {
   return (
     // Map imputs
     <div className="map">
-
       <h1 className="map__title">SunChaser</h1>
       <div className="map__userInput">
         <div className="map__searchBar">
           <input
             type="search"
-            placeholder="Where are you? !NOT IMPLEMENTED!"
-            value={typedInfo}
-            onChange={(e) => setTypedInfo(e.target.value)}
+            placeholder="Where are you?"
+            value={originInput}
+            onChange={(e) => setOriginInput(e.target.value)}
             className="map__searchBar-input"
           />
+          <button
+            onClick={handleOriginSearch}
+            className="map__searchBar-button"
+          >
+            From
+          </button>
         </div>
         <div className="map__searchBar">
           <input
             type="search"
             placeholder="Where would you like to go?"
-            value={typedInfo}
-            onChange={(e) => setTypedInfo(e.target.value)}
+            value={destinationInput}
+            onChange={(e) => setDestinationInput(e.target.value)}
             className="map__searchBar-input"
           />
+          <button
+            className="map__searchBar-button"
+            onClick={handleDestinationSearch}
+          >
+            To
+          </button>
         </div>
       </div>
 
@@ -79,6 +144,16 @@ function Map() {
             </Popup>
           </Marker>
         ))}
+        {originCoords && (
+          <Marker position={originCoords} icon={startIcon}>
+            <Popup>Start Location</Popup>
+          </Marker>
+        )}
+        {destinationCoords && (
+          <Marker position={destinationCoords} icon={endIcon}>
+            <Popup>Destination</Popup>
+          </Marker>
+        )}
       </MapContainer>
     </div>
   );

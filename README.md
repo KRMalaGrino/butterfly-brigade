@@ -20,7 +20,7 @@ SunChaser is an interactive web app that helps users plan the most scenic and ef
   `python -m uvicorn python_code_for_engineers:app --reload`
 
 # Created By
-Victor Forman | Data Scientist | LinkedIn: https://www.linkedin.com/in/victor-forman-9687b1a9/ 
-Sabrina McField | Data Scientist | LinkedIn: https://www.linkedin.com/in/sabrina-mcfield/
-Ryan Malagrino | Software Engineer | LinkedIn: https://www.linkedin.com/in/ryanjmalagrino/
-Liam Devine | Software Engineer | LinkedIn: https://www.linkedin.com/in/liam-d-48935a34a/
+- Victor Forman | Data Scientist | LinkedIn: https://www.linkedin.com/in/victor-forman-9687b1a9/ 
+- Sabrina McField | Data Scientist | LinkedIn: https://www.linkedin.com/in/sabrina-mcfield/
+- Ryan Malagrino | Software Engineer | LinkedIn: https://www.linkedin.com/in/ryanjmalagrino/
+- Liam Devine | Software Engineer | LinkedIn: https://www.linkedin.com/in/liam-d-48935a34a/

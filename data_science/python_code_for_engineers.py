@@ -8,10 +8,13 @@ import math
 from geopy.geocoders import Nominatim
 
 app = FastAPI()
+#Run the API with:
+# python -m uvicorn python_code_for_engineers:app --reload
 
-# Link to read the landmarks csv file that is located in Sabrina's branch
-url = 'https://raw.githubusercontent.com/KRMalaGrino/butterfly-brigade/refs/heads/sabrina/data_science/landmarks.csv'
-landmarks = pd.read_csv(url)
+
+
+# read the landmarks csv file
+landmarks = pd.read_csv("datasets/landmarks.csv")
 
 #  The functions distance, compute_total_distance, and geocode_address is the foundational logic required to run the final best_route_map function
 
@@ -115,8 +118,3 @@ def get_best_route(request: RouteRequest):
   "min_popularity": 50,
   "max_visit_time": 5
 }
-
-#Run the API with:
-uvicorn python_code_for_engineers:app
-
-

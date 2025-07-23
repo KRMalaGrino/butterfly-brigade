@@ -1,17 +1,12 @@
-# Summer Sightseeing Roadtrip #
-a roadtrip route through the most picturesque and popular landmarks and natural attractions. 
+# Summer Sightseeing Roadtrip
 
-## Tech Used ##
- - React 
- - Html / Css
- - Python
+SunChaser is an interactive web app that helps users plan the most scenic and efficient summer road trip across the United States.
+By using real-world landmark data—including user reviews, photo popularity, and estimated visit times—the app creates a personalized
+sightseeing route for travelers who want to make the most of their summer adventure.
 
------------------------------------------------------
-### delete me befor the end ### 
- - git checkout -b "branchname" ->  creates new branch
- - git branch                   ->  lists all branches
- - git checkout "branchname"    ->  switches to your branch
- - git push origin "branchname" ->  Pushes to your branch
- - git add */filename           -> Stages *(All files) or by given file name
- - git commit -m "commit message" -> Commits staged files
- - git push                     -> Pushes to your current branch
+## Tech Used
+
+- React
+- Html / Css
+- Python
+- Interactive map from Leaflet and OpenStreetMap

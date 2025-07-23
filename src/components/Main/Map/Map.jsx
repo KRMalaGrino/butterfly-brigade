@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { places } from "../../../utils/constants";
 import L from "leaflet";
+import { Polyline } from "react-leaflet";
 
 function Map() {
   const [typedInfo, setTypedInfo] = useState("");
@@ -11,6 +12,7 @@ function Map() {
   const [destinationInput, setDestinationInput] = useState("");
   const [destinationCoords, setDestinationCoords] = useState(null);
   const [filteredPlaces, setFilteredPlaces] = useState(places);
+  const [routePoints, setRoutePoints] = useState([]);
 
   const startIcon = new L.Icon({
     iconUrl: "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
@@ -26,16 +28,20 @@ function Map() {
     popupAnchor: [0, -32],
   });
 
-  function handleOriginSearch() {
-    if (!originInput.trim()) return;
+  function geocodeAndAddPoint(query) {
+    if (!query.trim() || routePoints.length >= 5) return;
 
-    const query = encodeURIComponent(originInput.trim());
-    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`)
+    fetch(
+      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
+        query.trim()
+      )}`
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data && data.length > 0) {
           const { lat, lon } = data[0];
-          setOriginCoords([parseFloat(lat), parseFloat(lon)]);
+          const coords = [parseFloat(lat), parseFloat(lon)];
+          setRoutePoints((prev) => [...prev, coords]);
         } else {
           alert("Location not found.");
         }
@@ -45,25 +51,12 @@ function Map() {
         alert("Failed to geocode address.");
       });
   }
+  function handleOriginSearch() {
+    geocodeAndAddPoint(originInput);
+  }
 
   function handleDestinationSearch() {
-    if (!destinationInput.trim()) return;
-
-    const query = encodeURIComponent(destinationInput.trim());
-    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.length > 0) {
-          const { lat, lon } = data[0];
-          setDestinationCoords([parseFloat(lat), parseFloat(lon)]);
-        } else {
-          alert("Destination not found.");
-        }
-      })
-      .catch((err) => {
-        console.error("Geocoding error:", err);
-        alert("Failed to geocode address.");
-      });
+    geocodeAndAddPoint(destinationInput);
   }
 
   // filter whenever typedInfo changes
@@ -153,6 +146,40 @@ function Map() {
           <Marker position={destinationCoords} icon={endIcon}>
             <Popup>Destination</Popup>
           </Marker>
+        )}
+        {originCoords && destinationCoords && (
+          <Polyline
+            positions={[originCoords, destinationCoords]}
+            pathOptions={{ color: "blue", weight: 4, opacity: 0.7 }}
+          />
+        )}
+        {routePoints.map((coords, index) => (
+          <Marker
+            key={index}
+            position={coords}
+            icon={
+              index === 0
+                ? startIcon
+                : index === routePoints.length - 1
+                ? endIcon
+                : undefined
+            }
+          >
+            <Popup>
+              {index === 0
+                ? "Start"
+                : index === routePoints.length - 1
+                ? "End"
+                : `Waypoint ${index + 1}`}
+            </Popup>
+          </Marker>
+        ))}
+
+        {routePoints.length > 1 && (
+          <Polyline
+            positions={routePoints}
+            pathOptions={{ color: "blue", weight: 4, opacity: 0.7 }}
+          />
         )}
       </MapContainer>
     </div>

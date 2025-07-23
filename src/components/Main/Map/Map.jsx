@@ -6,14 +6,11 @@ import L from "leaflet";
 import { Polyline } from "react-leaflet";
 
 function Map() {
-  const [typedInfo, setTypedInfo] = useState("");
   const [originInput, setOriginInput] = useState("");
-  const [originCoords, setOriginCoords] = useState(null);
   const [destinationInput, setDestinationInput] = useState("");
-  const [destinationCoords, setDestinationCoords] = useState(null);
-  const [filteredPlaces, setFilteredPlaces] = useState(places);
   const [routePoints, setRoutePoints] = useState([]);
 
+  // grabs the map icons from google which you can do apparently 
   const startIcon = new L.Icon({
     iconUrl: "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
     iconSize: [32, 32],
@@ -59,23 +56,6 @@ function Map() {
     geocodeAndAddPoint(destinationInput);
   }
 
-  // filter whenever typedInfo changes
-  useEffect(() => {
-    setFilteredPlaces(
-      places.filter((place) =>
-        place.name.toLowerCase().includes(typedInfo.toLowerCase().trim())
-      )
-    );
-  }, [typedInfo]);
-
-  // // Create the icon object
-  // const customIcon = L.icon({
-  //   iconUrl: place.image,
-  //   iconSize: [40, 40], // adjust size as needed
-  //   iconAnchor: [20, 40], // anchor (bottom-center of icon)
-  //   popupAnchor: [0, -40], // popup appears above marker
-  // });
-
   return (
     // Map imputs
     <div className="map">
@@ -116,17 +96,15 @@ function Map() {
       <MapContainer
         center={[39.5, -98.35]}
         zoom={4}
-        // placeholder={"interactive map"} Placeholder doesn't work
         style={{ height: "500px", width: "100%" }} // leaflet css div's don't work with markers
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-        {filteredPlaces.map((place) => (
+        {places.map((place) => (
           <Marker
             key={place.landmark}
             position={[Number(place.latitude), Number(place.longitude)]}
             alt={`${place.landmark} image`}
-            // iconUrl={customIcon}
           >
             <Popup>
               <strong>{place.landmark}</strong>
@@ -137,22 +115,6 @@ function Map() {
             </Popup>
           </Marker>
         ))}
-        {originCoords && (
-          <Marker position={originCoords} icon={startIcon}>
-            <Popup>Start Location</Popup>
-          </Marker>
-        )}
-        {destinationCoords && (
-          <Marker position={destinationCoords} icon={endIcon}>
-            <Popup>Destination</Popup>
-          </Marker>
-        )}
-        {originCoords && destinationCoords && (
-          <Polyline
-            positions={[originCoords, destinationCoords]}
-            pathOptions={{ color: "blue", weight: 4, opacity: 0.7 }}
-          />
-        )}
         {routePoints.map((coords, index) => (
           <Marker
             key={index}

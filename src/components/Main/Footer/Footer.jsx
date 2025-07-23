@@ -6,14 +6,11 @@ import ryan from "../../../images/teammates/Ryan.jpg";
 function Footer() {
   return (
     <div className="footer">
-      <p className="footer__text">
-        Butterfly Brigade - Road Trip : East to West
-      </p>
+      <p className="footer__text">Sun Chaser</p>
       <div className="footer__team-linked-ins">
         <div className="footer__wrapper">
           <p className="footer__icon-text">Victor</p>
           <a
-
             href="https://www.linkedin.com/in/victor-forman-9687b1a9/"
             target="_blank"
             rel="noopener noreferrer"
@@ -24,7 +21,6 @@ function Footer() {
         <div className="footer__wrapper">
           <p className="footer__icon-text">Sabrina</p>
           <a
-
             href="https://www.linkedin.com/in/sabrina-mcfield/"
             target="_blank"
             rel="noopener noreferrer"
@@ -49,11 +45,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              className="footer__icon"
-              src={ryan}
-              alt="Ryan"
-            />
+            <img className="footer__icon" src={ryan} alt="Ryan" />
           </a>
         </div>
       </div>

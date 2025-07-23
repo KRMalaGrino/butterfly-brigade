@@ -10,3 +10,11 @@ sightseeing route for travelers who want to make the most of their summer advent
 - Html / Css
 - Python
 - Interactive map from Leaflet and OpenStreetMap
+
+## how to deploy
+
+- when deploying cd into the butterfly-brigade then run the following in the terminal
+  `npm run dev`
+
+- then cd into data_science then run the following in the terminal
+  `python -m uvicorn python_code_for_engineers:app --reload`

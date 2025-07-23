@@ -1,0 +1,51 @@
+.location {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  position: relative;
+
+  transform: scale(0.85);
+  transform-origin: top bottom;
+}
+
+.location a {
+  display: inline-block;
+  z-index: 10;
+}
+
+.location__img-wrapper {
+  margin: 0 auto;
+  padding: 10px 45px 10px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.location__img {
+  margin: 0;
+  width: 30%;
+  height: 282px;
+  object-fit: fill;
+}
+
+.location__back-btn {
+  position: absolute;
+  top: 3%;
+  left: 2%;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.location__back-btn {
+  top: 4%;
+  left: 2%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+
+  cursor: pointer;
+}

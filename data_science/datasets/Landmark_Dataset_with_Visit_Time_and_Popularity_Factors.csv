@@ -1,0 +1,10 @@
+City,State,Landmark,Latitude,Longitude,Type,Visit Time (hrs),Average User Rating,Reviews/Photos,Annual Visitors
+Keystone,South Dakota,Mount Rushmore,43.8791,-103.4591,Historical/Architectural,2,4.7,25000,2000000
+Grand Canyon Village,Arizona,Grand Canyon,36.1069,-112.1129,Natural,8,4.9,60000,6000000
+Niagara Falls,New York,Niagara Falls,43.0962,-79.0377,Natural,4,4.8,55000,9000000
+New York,New York,Statue of Liberty,40.6892,-74.0445,Historical/Architectural,4,4.7,30000,4300000
+St. Louis,Missouri,Gateway Arch,38.6247,-90.1848,Architectural,2,4.7,15000,2000000
+Washington,District of Columbia,Lincoln Memorial,38.8893,-77.0502,Historical,1,4.8,25000,8000000
+San Francisco,California,Golden Gate Bridge,37.8199,-122.4783,Architectural,2,4.8,45000,10000000
+Orlando,Florida,Disney World,28.3852,-81.5639,Amusement Park,8,4.7,85000,58000000
+Las Vegas,Nevada,Las Vegas Sphere,36.1699,-115.1398,Architectural/Entertainment,2,4.6,10000,3000000

@@ -48,7 +48,11 @@ function App() {
         <Route
           path="/"
           element={
-            <Main places={places} route={route} singlePlace={singlePlace} />
+            <Main
+              places={places}
+              route={route}
+              singlePlace={singlePlace}
+            />
           }
         />
       </Routes>
